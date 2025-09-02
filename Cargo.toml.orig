@@ -1,0 +1,35 @@
+[package]
+name = "atlas-config-program-client"
+version = "1.1.0"
+description = "A generated Rust library for the Config program"
+authors = { workspace = true }
+repository = { workspace = true }
+readme = { workspace = true }
+license-file = { workspace = true }
+edition = { workspace = true }
+
+[features]
+fetch = ["dep:atlas-client", "dep:atlas-sdk"]
+serde = [
+    "dep:bincode", 
+    "dep:serde", 
+    "dep:atlas-config-interface", 
+    "kaigan/serde", 
+    "atlas-config-interface/bincode"
+]
+test-sbf = []
+
+[dependencies]
+bincode = { workspace = true, optional = true }
+borsh = { workspace = true }
+kaigan = { workspace = true }
+serde = { workspace = true, features = ["derive"], optional = true }
+atlas-client = { workspace = true, optional = true }
+atlas-config-interface = { workspace = true, optional = true }
+atlas-program = { workspace = true, features = ["borsh"] }
+atlas-sdk = { workspace = true, optional = true }
+
+[dev-dependencies]
+assert_matches = { workspace = true }
+bincode = { workspace = true }
+atlas-sdk = { workspace = true }
